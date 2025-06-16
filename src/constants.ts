@@ -13,7 +13,7 @@ export const chainsToTaskManager: ContractsConfig = {
     },
     // Sepolia (Ethereum testnet)
     11155111: {
-        taskManager: "0xabcdef1234567890abcdef1234567890abcdef12",
+        taskManager: "0x47c6c35472acfa582914393d7cd59e7448b09e51",
         no_check: null
     },
     // Ethereum Mainnet

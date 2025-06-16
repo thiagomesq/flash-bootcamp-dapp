@@ -129,7 +129,7 @@ function Account() {
 
   const supportedChains = chains.map(chain => ({
     id: chain.id,
-    name: chain.name,
+    name: chain.name+ (chain.id === 80002 ? " (Contrato não implementado)" : ""),
     icon: getChainIcon(chain.id)
   }));
 
@@ -145,7 +145,7 @@ function Account() {
       case 80002: // Polygon Amoy
         return <PolygonIcon size={size} color="#A855F7" className="flex-shrink-0" />;
       case 31337: // Anvil
-        return <DevIcon size={size} className="flex-shrink-0" />; // Mudança aqui
+        return <DevIcon size={size} className="flex-shrink-0" />;
       default:
         return <div className="w-6 h-6 bg-gray-400 rounded-full flex-shrink-0" />;
     }
