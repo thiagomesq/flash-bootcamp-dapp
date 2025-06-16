@@ -2,6 +2,10 @@
 
 A decentralized application (DApp) for personal task management with ETH staking system, built with Next.js, TypeScript, Wagmi and Tailwind CSS.
 
+## Live Demo
+
+🚀 **[Try the live application on Vercel](https://web3-todo-list-alpha.vercel.app/)**
+
 ## Getting Started
 
 ### Prerequisites
@@ -168,6 +172,16 @@ src/
 
 ### Custom Hooks
 
+#### `useCurrency`
+Manages dynamic currency information using Wagmi's useBalance:
+```typescript
+const {
+  balance,
+  isLoadingBalance,
+  currencySymbol
+} = useCurrency();
+```
+
 #### `useTaskTransaction`
 Manages all contract operations (create/complete tasks):
 ```typescript
@@ -296,7 +310,7 @@ Event-driven system for synchronization:
 ### Project Metrics
 
 - **Components**: 20+ reusable components
-- **Custom Hooks**: 5 specialized hooks
+- **Custom Hooks**: 6 specialized hooks
 - **Supported Networks**: 5 different blockchains
 - **TypeScript Coverage**: 100% type safety
 - **Responsive**: Mobile-first design
@@ -307,7 +321,15 @@ This application demonstrates best practices for modern DApp development, combin
 
 **Developed with ❤️ for the Web3 ecosystem**
 
+---
+
+# Task Manager DApp (Português)
+
 Uma aplicação descentralizada (DApp) para gerenciamento de tarefas pessoais com sistema de stake em ETH, construída com Next.js, TypeScript, Wagmi e Tailwind CSS.
+
+## Demo ao Vivo
+
+🚀 **[Experimente a aplicação ao vivo no Vercel](https://web3-todo-list-alpha.vercel.app/)**
 
 ## Getting Started
 
@@ -475,6 +497,16 @@ src/
 
 ### Hooks Customizados
 
+#### `useCurrency`
+Gerencia informações dinâmicas de moeda usando o useBalance do Wagmi:
+```typescript
+const {
+  balance,
+  isLoadingBalance,
+  currencySymbol
+} = useCurrency();
+```
+
 #### `useTaskTransaction`
 Gerencia todas as operações de contrato (criar/completar tarefas):
 ```typescript
@@ -613,3 +645,4 @@ Esta aplicação demonstra as melhores práticas para desenvolvimento de DApps m
 ---
 
 **Desenvolvido com ❤️ para o ecossistema Web3**
+
