@@ -288,7 +288,7 @@ Event-driven system for synchronization:
    - Support for more networks (Arbitrum, Optimism, Base)
    - IPFS integration for metadata
    - ERC-20 token reward system
-   - DAO features for governance
+   - Chainlink Data Feed integration to set stake price based on FIAT
    - Multi-signature for collaborative tasks
 
 ### Challenges Overcome
@@ -613,7 +613,7 @@ Sistema event-driven para sincronização:
    - Suporte a mais redes (Arbitrum, Optimism, Base)
    - Integração com IPFS para metadados
    - Sistema de recompensas com tokens ERC-20
-   - Funcionalidades DAO para governança
+   - Integração com Chainlink Data Feed para colocar o preço do stake baseado em FIAT
    - Multi-signature para tarefas colaborativas
 
 ### Desafios Superados
@@ -635,8 +635,8 @@ Sistema event-driven para sincronização:
 ### Métricas do Projeto
 
 - **Componentes**: 20+ componentes reutilizáveis
-- **Hooks Customizados**: 5 hooks especializados
-- **Redes Suportadas**: 5 blockchains diferentes
+- **Hooks Customizados**: 6 hooks especializados
+- **Redes Suportadas**: 3 blockchains diferentes
 - **TypeScript Coverage**: 100% type safety
 - **Responsive**: Mobile-first design
 
