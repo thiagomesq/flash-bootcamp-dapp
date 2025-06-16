@@ -45,7 +45,7 @@ export function useTaskTransaction() {
 
   function createTask(task: Task) {
     const dueDateTimestamp = BigInt(new Date(task.dueDate).getTime() / 1000); // Convert to seconds
-    const stakeInWei = parseEther(task.stake);
+    const stakeInWei = parseEther(task.stake.replace(',', '.')); // Convert to wei
     const taskManagerAddress = chainsToTaskManager[chainId]["taskManager"];
     
     writeContract({
