@@ -1,4 +1,5 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { useCurrency } from "@/hooks/useCurrency";
 
 interface StakeCardProps {
     value: string;
@@ -6,6 +7,7 @@ interface StakeCardProps {
 }
 
 export function StakeCard({ value, onClick }: StakeCardProps) {
+    const { currencySymbol } = useCurrency();
     const colors: Record<string, string> = {
         "0,000001": "bg-white outline-gray-300 outline-3 text-gray-700 hover:bg-gray-200 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer",
         "0,00005": "bg-yellow-100 outline-yellow-600 outline-3 text-yellow-600 hover:bg-yellow-200 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer",
@@ -16,7 +18,7 @@ export function StakeCard({ value, onClick }: StakeCardProps) {
         <Card className={colors[value]} onClick={() => onClick(value)}>
             <CardContent className="flex flex-col items-center gap-2">
                 <span className="text-black">Stake</span>
-                <span className="font-bold">{value} ETH</span>
+                <span className="font-bold">{value} {currencySymbol}</span>
             </CardContent>
             <CardFooter className="flex justify-center">
                 {

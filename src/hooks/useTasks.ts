@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAccount, useChainId, useReadContract } from "wagmi";
 import { chainsToTaskManager, taskManagerABI } from "@/constants";
 import { useTaskEvents } from "./useTaskEvents";
+import { Task } from "@/types/task";
 
 export function useTasks() {
   const { address, isConnected } = useAccount();
@@ -47,7 +48,7 @@ export function useTasks() {
   }, [onTaskCreated, onTaskCompleted, refetchTasks]);
 
   return {
-    tasksData: tasksData as any[] | undefined,
+    tasksData: tasksData as Task[] | undefined,
     isLoading,
     refetchTasks,
     error,

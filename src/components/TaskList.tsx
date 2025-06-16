@@ -5,9 +5,10 @@ import { TaskCard } from "./comons/taskCard"
 import { timestampToDate } from "@/utils";
 import { useTaskTransaction } from "@/hooks/useTaskTransaction";
 import { TransactionModal, DEFAULT_CONTENTS } from "@/components/ui/transactionModal";
+import { Task } from "@/types/task";
 
 interface TaskData {
-    tasksData?: any[],
+    tasksData?: Task[],
     isConnected: boolean,
     isLoading: boolean
 }
@@ -40,8 +41,7 @@ export function TaskList({tasksData, isConnected, isLoading}: TaskData) {
         createdAt: timestampToDate(Number(task.createdAt)),
         dueDate: timestampToDate(Number(task.dueDate)),
         status: task.isCompleted === true ? "Concluída" : "Pendente",
-        stake: formatEther(task.stake),
-        isCompleted: task.isCompleted
+        stake: formatEther(task.stake)
     })) || [];
 
     const handleCompleteTask = (taskId: number | bigint) => {

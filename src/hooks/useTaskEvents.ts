@@ -66,7 +66,7 @@ export function useTaskEvents() {
           createdAt,
           dueDate,
           owner
-        } = log.args as any;
+        } = log.args;
 
         const eventData: TaskCreatedEvent = {
           id: id?.toString() || '',
@@ -97,7 +97,7 @@ export function useTaskEvents() {
     eventName: 'TaskCompleted',
     onLogs(logs) {
       logs.forEach((log) => {
-        const { id, createdAt, completedAt } = log.args as any;
+        const { id, createdAt, completedAt } = log.args;
 
         const eventData: TaskCompletedEvent = {
           id: id?.toString() || '',

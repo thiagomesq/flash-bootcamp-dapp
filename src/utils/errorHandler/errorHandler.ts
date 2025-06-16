@@ -1,4 +1,6 @@
-export function formatTransactionError(error: any): string {
+import { WaitForTransactionReceiptErrorType, WriteContractErrorType } from "wagmi/actions";
+
+export function formatTransactionError(error: WriteContractErrorType | WaitForTransactionReceiptErrorType | null): string {
   const errorMessage = error?.message || error?.toString() || '';
   
   // Usuário rejeitou a transação
@@ -44,7 +46,7 @@ export function formatTransactionError(error: any): string {
   return 'Erro inesperado. Tente novamente ou contate o suporte';
 }
 
-export function getErrorCategory(error: any): 'user_rejected' | 'insufficient_funds' | 'network_error' | 'contract_error' | 'unknown' {
+export function getErrorCategory(error: WriteContractErrorType | WaitForTransactionReceiptErrorType | null): 'user_rejected' | 'insufficient_funds' | 'network_error' | 'contract_error' | 'unknown' {
   const errorMessage = error?.message || error?.toString() || '';
   
   if (errorMessage.includes('User rejected') || 

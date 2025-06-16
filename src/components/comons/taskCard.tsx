@@ -1,6 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BadgeCheckIcon, Loader2 } from "lucide-react";
+import { useCurrency } from "@/hooks/useCurrency";
 
 interface TaskCardProps {
     id: number | bigint;
@@ -25,6 +26,7 @@ export function TaskCard({
     isTransactionInProgress = false,
     onCompleteTask 
 }: TaskCardProps) {
+    const { currencySymbol } = useCurrency();
     const isCompleted = status === "Concluída";
     const canComplete = !isCompleted; // Pode completar se não estiver completada
 
@@ -103,7 +105,7 @@ export function TaskCard({
                 </div>
                 <div className="text-right">
                     <div className="text-lg font-semibold text-blue-600 dark:text-blue-400">
-                        {stake} ETH
+                        {stake} {currencySymbol}
                     </div>
                     {isCompleted ? (
                         <p className="text-xs text-green-600 dark:text-green-400 font-medium">

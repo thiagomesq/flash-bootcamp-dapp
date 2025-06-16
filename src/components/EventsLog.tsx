@@ -1,9 +1,11 @@
 "use client";
+import { useCurrency } from "@/hooks/useCurrency";
 import { useTaskEvents } from "@/hooks/useTaskEvents";
 import { formatEther } from "viem";
 
 export function EventsLog() {
   const { taskCreatedEvents, taskCompletedEvents, clearEvents } = useTaskEvents();
+  const { currencySymbol } = useCurrency();
 
   // Combina e ordena eventos por timestamp
   const allEvents = [
@@ -50,7 +52,7 @@ export function EventsLog() {
                     </h4>
                     <p className="text-sm text-green-700 dark:text-green-400">
                       <strong>ID:</strong> {event.id} | 
-                      <strong> Stake:</strong> {formatEther(BigInt(event.stake))} ETH
+                      <strong> Stake:</strong> {formatEther(BigInt(event.stake))} {currencySymbol}
                     </p>
                     <p className="text-sm text-green-700 dark:text-green-400 truncate">
                       <strong>Título:</strong> {event.title}
