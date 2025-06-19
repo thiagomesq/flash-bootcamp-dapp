@@ -3,7 +3,7 @@ import { anvil, polygonAmoy, sepolia } from 'wagmi/chains'
 import { metaMask} from 'wagmi/connectors'
 import { createClient } from 'viem'
 
-const infuraApiKey = process.env.NEXT_PUBLIC_INFURA_API_KEY
+const infuraApiKey = process.env.INFURA_API_KEY
 
 const rpcUrls = {
   mainnet: infuraApiKey 
