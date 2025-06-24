@@ -1,17 +1,7 @@
 'use client';
 
+import { ServerConfig } from '@/types/config';
 import { useState, useEffect } from 'react';
-
-interface ServerConfig {
-  rpcUrls: {
-    mainnet: string;
-    sepolia: string;
-    polygon: string;
-    polygonAmoy: string;
-  };
-  walletConnectProjectId: string;
-  hasInfuraKey: boolean;
-}
 
 export function useServerConfig() {
   const [config, setConfig] = useState<ServerConfig | null>(null);

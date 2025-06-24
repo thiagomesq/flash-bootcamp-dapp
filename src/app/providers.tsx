@@ -1,11 +1,11 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider, type Config } from "wagmi";
+import { WagmiProvider } from "wagmi";
 import { ThemeProvider } from "./theme-provider";
 import { createWagmiConfig, config as defaultConfig } from "@/config";
 import { useServerConfig } from "@/hooks/useServerConfig";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useMemo } from "react";
 
 const queryClient = new QueryClient();
 

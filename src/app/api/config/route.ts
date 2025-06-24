@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getRpcUrls, serverConfig } from '@/lib/serverConfig';
+import type { ConfigResponse } from '@/types/config';
 
 // Cache da configuração por 1 hora
 const CACHE_TIME = 60 * 60 * 1000; // 1 hora em ms
-let cachedConfig: any = null;
+let cachedConfig: ConfigResponse | null = null;
 let cacheTimestamp = 0;
 
 export async function GET() {
@@ -21,7 +22,7 @@ export async function GET() {
 
     // Gerar nova configuração
     const rpcUrls = getRpcUrls();
-    const config = {
+    const config: ConfigResponse = {
       rpcUrls,
       walletConnectProjectId: !!serverConfig.walletConnectProjectId,
       hasInfuraKey: !!serverConfig.infuraApiKey,
