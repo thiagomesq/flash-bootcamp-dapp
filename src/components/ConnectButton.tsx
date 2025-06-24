@@ -84,6 +84,8 @@ function WalletOption({
           <Image
             alt={`${connector.name} icon`}
             src={connector.icon}
+            width={24}
+            height={24}
             className="h-6 w-6 rounded-sm"
           />
         )}
