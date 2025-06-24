@@ -13,7 +13,7 @@ export const chainsToTaskManager: ContractsConfig = {
     },
     // Sepolia (Ethereum testnet)
     11155111: {
-        taskManager: "0x90f8fb64a61364e5288e504c8b24f59279a9b8d1",
+        taskManager: "0x07Ac2592EE3AD324aA1f0F105e5B652b4312A379",
         no_check: null
     },
     // Polygon Amoy (testnet)
@@ -55,157 +55,150 @@ export function getChainInfo(chainId: number) {
 
 // TaskManager contract ABI - modularized and cleaned up
 export const taskManagerABI = [
-    // Functions
     {
-        type: "function",
-        name: "createTask",
-        inputs: [
-            { name: "_title", type: "string", internalType: "string" },
-            { name: "_description", type: "string", internalType: "string" },
-            { name: "_dueDate", type: "uint256", internalType: "uint256" }
-        ],
-        outputs: [],
-        stateMutability: "payable"
+        "type": "constructor",
+        "inputs": [{"name": "_minimumStake", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "nonpayable"
     },
     {
-        type: "function",
-        name: "completeTask",
-        inputs: [
-            { name: "_id", type: "uint256", internalType: "uint256" }
-        ],
-        outputs: [],
-        stateMutability: "nonpayable"
+        "type": "function",
+        "name": "completeTask",
+        "inputs": [{"name": "_id", "type": "uint256", "internalType": "uint256"}],
+        "outputs": [],
+        "stateMutability": "nonpayable"
     },
     {
-        type: "function",
-        name: "getTask",
-        inputs: [
-            { name: "_id", type: "uint256", internalType: "uint256" }
+        "type": "function",
+        "name": "createTask",
+        "inputs": [
+            {"name": "_title", "type": "string", "internalType": "string"},
+            {"name": "_description", "type": "string", "internalType": "string"},
+            {"name": "_dueDate", "type": "uint256", "internalType": "uint256"}
         ],
-        outputs: [
-            {
-                name: "",
-                type: "tuple",
-                internalType: "struct TaskManager.Task",
-                components: [
-                    { name: "id", type: "uint256", internalType: "uint256" },
-                    { name: "stake", type: "uint256", internalType: "uint256" },
-                    { name: "title", type: "string", internalType: "string" },
-                    { name: "description", type: "string", internalType: "string" },
-                    { name: "createdAt", type: "uint256", internalType: "uint256" },
-                    { name: "completedAt", type: "uint256", internalType: "uint256" },
-                    { name: "dueDate", type: "uint256", internalType: "uint256" },
-                    { name: "isCompleted", type: "bool", internalType: "bool" },
-                    { name: "owner", type: "address", internalType: "address" }
-                ]
-            }
-        ],
-        stateMutability: "view"
+        "outputs": [],
+        "stateMutability": "payable"
     },
     {
-        type: "function",
-        name: "getTasks",
-        inputs: [],
-        outputs: [
-            {
-                name: "",
-                type: "tuple[]",
-                internalType: "struct TaskManager.Task[]",
-                components: [
-                    { name: "id", type: "uint256", internalType: "uint256" },
-                    { name: "stake", type: "uint256", internalType: "uint256" },
-                    { name: "title", type: "string", internalType: "string" },
-                    { name: "description", type: "string", internalType: "string" },
-                    { name: "createdAt", type: "uint256", internalType: "uint256" },
-                    { name: "completedAt", type: "uint256", internalType: "uint256" },
-                    { name: "dueDate", type: "uint256", internalType: "uint256" },
-                    { name: "isCompleted", type: "bool", internalType: "bool" },
-                    { name: "owner", type: "address", internalType: "address" }
-                ]
-            }
-        ],
-        stateMutability: "view"
+        "type": "function",
+        "name": "getMinimumStake",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
     },
     {
-        type: "function",
-        name: "getTasksCount",
-        inputs: [],
-        outputs: [
-            { name: "", type: "uint256", internalType: "uint256" }
-        ],
-        stateMutability: "view"
-    },
-    // Events
-    {
-        type: "event",
-        name: "TaskCreated",
-        inputs: [
-            { name: "id", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "stake", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "title", type: "string", indexed: false, internalType: "string" },
-            { name: "description", type: "string", indexed: false, internalType: "string" },
-            { name: "createdAt", type: "uint256", indexed: false, internalType: "uint256" },
-            { name: "completedAt", type: "uint256", indexed: false, internalType: "uint256" },
-            { name: "dueDate", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "isCompleted", type: "bool", indexed: false, internalType: "bool" },
-            { name: "owner", type: "address", indexed: false, internalType: "address" }
-        ],
-        anonymous: false
+        "type": "function",
+        "name": "getTask",
+        "inputs": [{"name": "_id", "type": "uint256", "internalType": "uint256"}],
+        "outputs": [{
+            "name": "",
+            "type": "tuple",
+            "internalType": "struct TaskManager.Task",
+            "components": [
+                {"name": "id", "type": "uint256", "internalType": "uint256"},
+                {"name": "stake", "type": "uint256", "internalType": "uint256"},
+                {"name": "title", "type": "string", "internalType": "string"},
+                {"name": "description", "type": "string", "internalType": "string"},
+                {"name": "createdAt", "type": "uint256", "internalType": "uint256"},
+                {"name": "completedAt", "type": "uint256", "internalType": "uint256"},
+                {"name": "dueDate", "type": "uint256", "internalType": "uint256"},
+                {"name": "isCompleted", "type": "bool", "internalType": "bool"},
+                {"name": "owner", "type": "address", "internalType": "address"}
+            ]
+        }],
+        "stateMutability": "view"
     },
     {
-        type: "event",
-        name: "TaskCompleted",
-        inputs: [
-            { name: "id", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "createdAt", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "completedAt", type: "uint256", indexed: true, internalType: "uint256" }
-        ],
-        anonymous: false
+        "type": "function",
+        "name": "getTasks",
+        "inputs": [],
+        "outputs": [{
+            "name": "",
+            "type": "tuple[]",
+            "internalType": "struct TaskManager.Task[]",
+            "components": [
+                {"name": "id", "type": "uint256", "internalType": "uint256"},
+                {"name": "stake", "type": "uint256", "internalType": "uint256"},
+                {"name": "title", "type": "string", "internalType": "string"},
+                {"name": "description", "type": "string", "internalType": "string"},
+                {"name": "createdAt", "type": "uint256", "internalType": "uint256"},
+                {"name": "completedAt", "type": "uint256", "internalType": "uint256"},
+                {"name": "dueDate", "type": "uint256", "internalType": "uint256"},
+                {"name": "isCompleted", "type": "bool", "internalType": "bool"},
+                {"name": "owner", "type": "address", "internalType": "address"}
+            ]
+        }],
+        "stateMutability": "view"
     },
-    // Errors
     {
-        type: "error",
-        name: "TaskManager__InsufficientStake",
-        inputs: [
-            { name: "providedStake", type: "uint256", internalType: "uint256" },
-            { name: "minimumStake", type: "uint256", internalType: "uint256" }
+        "type": "function",
+        "name": "getTasksCount",
+        "inputs": [],
+        "outputs": [{"name": "", "type": "uint256", "internalType": "uint256"}],
+        "stateMutability": "view"
+    },
+    {
+        "type": "event",
+        "name": "TaskCompleted",
+        "inputs": [
+            {"name": "id", "type": "uint256", "indexed": true, "internalType": "uint256"},
+            {"name": "createdAt", "type": "uint256", "indexed": true, "internalType": "uint256"},
+            {"name": "completedAt", "type": "uint256", "indexed": true, "internalType": "uint256"}
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "TaskCreated",
+        "inputs": [
+            {"name": "id", "type": "uint256", "indexed": true, "internalType": "uint256"},
+            {"name": "stake", "type": "uint256", "indexed": true, "internalType": "uint256"},
+            {"name": "title", "type": "string", "indexed": false, "internalType": "string"},
+            {"name": "description", "type": "string", "indexed": false, "internalType": "string"},
+            {"name": "createdAt", "type": "uint256", "indexed": false, "internalType": "uint256"},
+            {"name": "completedAt", "type": "uint256", "indexed": false, "internalType": "uint256"},
+            {"name": "dueDate", "type": "uint256", "indexed": true, "internalType": "uint256"},
+            {"name": "isCompleted", "type": "bool", "indexed": false, "internalType": "bool"},
+            {"name": "owner", "type": "address", "indexed": false, "internalType": "address"}
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "error",
+        "name": "TaskManager__InsufficientStake",
+        "inputs": [
+            {"name": "providedStake", "type": "uint256", "internalType": "uint256"},
+            {"name": "minimumStake", "type": "uint256", "internalType": "uint256"}
         ]
     },
     {
-        type: "error",
-        name: "TaskManager__TaskAlreadyCompleted",
-        inputs: [
-            { name: "id", type: "uint256", internalType: "uint256" }
+        "type": "error",
+        "name": "TaskManager__TaskAlreadyCompleted",
+        "inputs": [{"name": "id", "type": "uint256", "internalType": "uint256"}]
+    },
+    {
+        "type": "error",
+        "name": "TaskManager__TaskIsOverdue",
+        "inputs": [{"name": "id", "type": "uint256", "internalType": "uint256"}]
+    },
+    {
+        "type": "error",
+        "name": "TaskManager__TaskNotFound",
+        "inputs": [{"name": "id", "type": "uint256", "internalType": "uint256"}]
+    },
+    {
+        "type": "error",
+        "name": "TaskManager__TransferFailed",
+        "inputs": [
+            {"name": "to", "type": "address", "internalType": "address"},
+            {"name": "amount", "type": "uint256", "internalType": "uint256"}
         ]
     },
     {
-        type: "error",
-        name: "TaskManager__TaskIsOverdue",
-        inputs: [
-            { name: "id", type: "uint256", internalType: "uint256" }
-        ]
-    },
-    {
-        type: "error",
-        name: "TaskManager__TaskNotFound",
-        inputs: [
-            { name: "id", type: "uint256", internalType: "uint256" }
-        ]
-    },
-    {
-        type: "error",
-        name: "TaskManager__TransferFailed",
-        inputs: [
-            { name: "to", type: "address", internalType: "address" },
-            { name: "amount", type: "uint256", internalType: "uint256" }
-        ]
-    },
-    {
-        type: "error",
-        name: "TaskManager__Unauthorized",
-        inputs: [
-            { name: "caller", type: "address", internalType: "address" },
-            { name: "owner", type: "address", internalType: "address" }
+        "type": "error",
+        "name": "TaskManager__Unauthorized",
+        "inputs": [
+            {"name": "caller", "type": "address", "internalType": "address"},
+            {"name": "owner", "type": "address", "internalType": "address"}
         ]
     }
 ] as const;

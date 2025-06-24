@@ -1,6 +1,6 @@
 'use client';
 
-import { ServerConfig } from '@/types/config';
+import { ServerConfig } from '@/types';
 import { useState, useEffect } from 'react';
 
 export function useServerConfig() {

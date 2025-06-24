@@ -1,13 +1,21 @@
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogDescription, 
+  DialogFooter, 
+  DialogTitle, 
+  DialogTrigger, 
+  Button, 
+  Input, 
+  Textarea, 
+  Label, 
+  TransactionModal, 
+  DEFAULT_CONTENTS 
+} from "@/components/ui";
 import { PlusIcon, Loader2 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { StakeCard } from "@/components/comons/stakeCard";
-import { Label } from "@/components/ui/label";
+import { StakeCard } from "@/components/commons";
 import { useState } from "react";
-import { TransactionModal, DEFAULT_CONTENTS } from "@/components/ui/transactionModal";
-import { useTaskTransaction } from "@/hooks/useTaskTransaction";
+import { useTaskTransaction, useCurrency } from "@/hooks";
 
 type Task = {
   stake: string;
@@ -38,6 +46,8 @@ export function NewTaskForm({isConnected}: {isConnected: boolean}) {
     isTransactionInProgress,
     chainId
   } = useTaskTransaction();
+
+  const { minimumStake, lowStake, mediumStake, highStake } = useCurrency();
 
   const camposObrigatoriosPreenchidos = 
     newTask.title !== "" && 
@@ -83,7 +93,7 @@ export function NewTaskForm({isConnected}: {isConnected: boolean}) {
             <span>Nova Tarefa</span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-h-[90vh] overflow-hidden">
           <DialogTitle>Nova Tarefa</DialogTitle>
           <DialogDescription className="flex flex-col gap-4 max-h-[60vh] overflow-y-auto p-4">
             <Label htmlFor="title">Título</Label>
@@ -117,11 +127,11 @@ export function NewTaskForm({isConnected}: {isConnected: boolean}) {
               value={newTask.stake} 
               readOnly={true} 
             />
-            <div className="grid grid-cols-2 gap-2">
-              <StakeCard value={"0,001"} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
-              <StakeCard value={"0,0002"} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
-              <StakeCard value={"0,00005"} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
-              <StakeCard value={"0,000001"} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <StakeCard value={highStake} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
+              <StakeCard value={mediumStake} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
+              <StakeCard value={lowStake} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
+              <StakeCard value={minimumStake} onClick={(value) => setNewTask({ ...newTask, stake: value })} />
             </div>
           </DialogDescription>
           <DialogFooter className="sticky bottom-0 pt-4">

@@ -1,18 +1,14 @@
 "use client";
-import { Header } from "@/components/Header";
-import { Dashboard } from "@/components/Dashboard";
-import { NewTaskForm } from "@/components/NewTaskForm";
-import { TaskList } from "@/components/TaskList";
-import { EventsLog } from "@/components/EventsLog";
+import { Header, Dashboard, NewTaskForm, TaskList, EventsLog } from "@/components";
 import { useAccount } from "wagmi";
-import { useTasks } from "@/hooks/useTasks";
+import { useTasks } from "@/hooks";
 
 export default function Home() {
   const { isConnected } = useAccount();
   const { tasksData, isLoading, taskManagerAddress } = useTasks();
 
   return (
-    <div className="flex flex-col min-h-screen max-w-7xl mx-auto pt-10">
+    <div className="flex flex-col min-h-screen max-w-7xl mx-auto pt-10 px-6 md:px-8 lg:px-10 xl:px-0 overflow-hidden">
       <Header />
       <Dashboard 
         tasksData={tasksData} 
@@ -25,7 +21,6 @@ export default function Home() {
       <div className="mt-10">
         {isConnected && <EventsLog />}
       </div>
-      
       
       <div className="flex justify-between items-center mt-10">
         <h1 className="text-2xl font-bold">Tarefas</h1>

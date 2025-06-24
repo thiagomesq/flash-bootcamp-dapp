@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { useAccount, useChainId, useReadContract } from "wagmi";
 import { chainsToTaskManager, taskManagerABI } from "@/constants";
-import { useTaskEvents } from "./useTaskEvents";
-import { Task } from "@/types/task";
+import { useTaskEvents } from "@/hooks";
+import { useEffect } from "react";
+import { Task } from "@/types";
 
 export function useTasks() {
   const { address, isConnected } = useAccount();

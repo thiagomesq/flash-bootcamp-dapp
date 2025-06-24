@@ -1,9 +1,9 @@
 import { useAccount, useReadContract } from "wagmi";
-import { StatusCard } from "./comons/statusCard";
+import { StatusCard } from "./commons";
 import { taskManagerABI } from "@/constants";
-import { formatEther } from "viem/utils";
-import { Task } from "@/types/task";
-import { useCurrency } from "@/hooks/useCurrency";
+import { formatEther } from "viem";
+import { Task } from "@/types";
+import { useCurrency } from "@/hooks";
 
 interface TaskData {
     tasksData?: Task[],

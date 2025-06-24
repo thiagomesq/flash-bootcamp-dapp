@@ -1,7 +1,6 @@
 "use client";
-import { useCurrency } from "@/hooks/useCurrency";
-import { useTaskEvents } from "@/hooks/useTaskEvents";
 import { formatEther } from "viem";
+import { useTaskEvents, useCurrency } from "@/hooks";
 
 export function EventsLog() {
   const { taskCreatedEvents, taskCompletedEvents, clearEvents } = useTaskEvents();

@@ -1,11 +1,11 @@
 "use client"
 
 import { formatEther } from "viem/utils";
-import { TaskCard } from "./comons/taskCard"
+import { TaskCard } from "@/components/commons"
 import { timestampToDate } from "@/utils";
-import { useTaskTransaction } from "@/hooks/useTaskTransaction";
-import { TransactionModal, DEFAULT_CONTENTS } from "@/components/ui/transactionModal";
-import { Task } from "@/types/task";
+import { useTaskTransaction } from "@/hooks";
+import { TransactionModal, DEFAULT_CONTENTS } from "@/components/ui";
+import { Task } from "@/types";
 
 interface TaskData {
     tasksData?: Task[],

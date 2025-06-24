@@ -1,7 +1,7 @@
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui";
+import { Badge } from "@/components/ui";
 import { BadgeCheckIcon, Loader2 } from "lucide-react";
-import { useCurrency } from "@/hooks/useCurrency";
+import { useCurrency } from "@/hooks";
 
 interface TaskCardProps {
     id: number | bigint;

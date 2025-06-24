@@ -1,5 +1,5 @@
 "use client"
-import { Button } from './ui/button'
+import { Button, Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from './ui'
 import { ChevronDown, WalletIcon } from 'lucide-react'
 import { 
   Connector,
@@ -14,12 +14,8 @@ import {
   useChainId
 } from 'wagmi'
 import * as React from 'react'
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger,  } from './ui/dialog'
-import { useHydrated } from '@/hooks/useHydrated'
-import { EthereumIcon } from "@/components/icons/EthereumIcon";
-import { PolygonIcon } from "@/components/icons/PolygonIcon";
-import { DevIcon } from "@/components/icons/DevIcon"; // Mudança aqui
-import { DefaultAvatar } from "@/components/icons/DefaultAvatar";
+import { useHydrated } from '@/hooks'
+import { EthereumIcon, PolygonIcon, DevIcon, DefaultAvatar } from "@/components/icons";
 import Image from 'next/image'
 
 function WalletOptions() {
@@ -33,7 +29,7 @@ function WalletOptions() {
           Connect Wallet
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4 duration-300 ease-out">
+      <DialogContent className=":max-w-md animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4 duration-300 ease-out">
         <DialogTitle className="text-center text-lg font-semibold">
           Selecione uma carteira
         </DialogTitle>
@@ -174,7 +170,7 @@ function Account() {
               <ChevronDown className="h-4 w-4" />
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-md animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4 duration-300 ease-out">
+          <DialogContent className="max-w-md animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4 duration-300 ease-out">
             <DialogTitle className="text-center text-lg font-semibold">
               Selecionar Blockchain
             </DialogTitle>
@@ -211,7 +207,7 @@ function Account() {
 
       {/* Informações da Carteira Conectada */}
       <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col md:flex-row items-center gap-3">
           {ensAvatar ? (
             <Image
               alt="ENS Avatar" 
