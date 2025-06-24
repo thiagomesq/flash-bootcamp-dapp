@@ -216,6 +216,8 @@ function Account() {
             <Image
               alt="ENS Avatar" 
               src={ensAvatar} 
+              width={24}
+              height={24}
               className="w-10 h-10 rounded-full border-2" 
             />
           ) : (

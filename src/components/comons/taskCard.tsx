@@ -28,7 +28,8 @@ export function TaskCard({
 }: TaskCardProps) {
     const { currencySymbol } = useCurrency();
     const isCompleted = status === "Concluída";
-    const canComplete = !isCompleted; // Pode completar se não estiver completada
+    const isVencida = status === "Vencida";
+    const canComplete = !isCompleted && !isVencida; // Pode completar se não estiver completada e não estiver vencida
 
     const handleCompleteTask = () => {
         if (canComplete && !isTransactionInProgress) {
@@ -37,20 +38,20 @@ export function TaskCard({
     };
 
     return (
-        <Card className={`transition-all duration-200 ${isCompleted ? 'opacity-75 bg-green-50 dark:bg-green-900/10' : ''}`}>
+        <Card className={`transition-all duration-200 ${isCompleted ? 'opacity-75 bg-green-50 dark:bg-green-900/10' : isVencida ? 'bg-red-50 dark:bg-red-900/10' : ''} hover:shadow-lg hover:scale-[1.01]`}>
             <CardHeader className="flex flex-row items-start justify-between">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-lg font-bold">{`${title} #${id}`}</h1>
                     <Badge 
-                        variant={isCompleted ? "secondary" : "default"} 
-                        className={isCompleted ? "bg-green-500 text-white dark:bg-green-600" : "bg-blue-500 text-white dark:bg-blue-600"}
+                        variant={isCompleted ? "secondary" : isVencida ? "destructive" : "default"} 
+                        className={isCompleted ? "bg-green-500 text-white dark:bg-green-600" : isVencida ? "bg-red-500 text-white dark:bg-red-600" : "bg-blue-500 text-white dark:bg-blue-600"}
                     >
                         {isCompleted && <BadgeCheckIcon className="w-4 h-4 mr-1" />}
                         {status}
                     </Badge>
                 </div>
                 
-                {/* Botão de completar tarefa - só aparece se não estiver completada */}
+                {/* Botão de completar tarefa - só aparece se não estiver completada ou vencida */}
                 {canComplete && (
                     <button 
                         className={`w-10 h-10 border-2 border-gray-200 dark:border-gray-700 rounded-lg hover:bg-green-50 dark:hover:bg-green-900/20 hover:border-green-400 dark:hover:border-green-500 transition-all duration-200 flex items-center justify-center group ${
@@ -86,6 +87,19 @@ export function TaskCard({
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
+                    </div>
+                )}
+                {/* Ícone de tarefa vencida */}
+                {!isCompleted && isVencida && (
+                    <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 border-2 border-red-400 dark:border-red-500 rounded-lg flex items-center justify-center">
+                        <svg 
+                            className="w-5 h-5 text-red-600 dark:text-red-400" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                     </div>
                 )}
             </CardHeader>

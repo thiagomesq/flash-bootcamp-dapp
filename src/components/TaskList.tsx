@@ -40,7 +40,7 @@ export function TaskList({tasksData, isConnected, isLoading}: TaskData) {
         description: task.description,
         createdAt: timestampToDate(Number(task.createdAt)),
         dueDate: timestampToDate(Number(task.dueDate)),
-        status: task.isCompleted === true ? "Concluída" : "Pendente",
+        status: task.isCompleted === true ? "Concluída" : Date.now() / 1000 > Number(task.dueDate) ? "Vencida" : "Pendente",
         stake: formatEther(task.stake)
     })) || [];
 
