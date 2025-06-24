@@ -1,9 +1,10 @@
 import { http, createConfig } from 'wagmi'
 import { anvil, polygonAmoy, sepolia } from 'wagmi/chains'
-import { metaMask} from 'wagmi/connectors'
+import { metaMask, walletConnect } from 'wagmi/connectors'
 import { createClient } from 'viem'
 
 const infuraApiKey = process.env.INFURA_API_KEY
+const walletconnectProjectId = process.env.WALLETCONNECT_PROJECT_ID!
 
 const rpcUrls = {
   mainnet: infuraApiKey 
@@ -27,6 +28,9 @@ export const config = createConfig({
   chains: [anvil, sepolia, polygonAmoy],
   connectors: [
     metaMask(),
+    walletConnect({
+      projectId: walletconnectProjectId,
+    }),
   ],
   client({ chain }) {
     switch (chain.id) {

@@ -20,6 +20,7 @@ import { EthereumIcon } from "@/components/icons/EthereumIcon";
 import { PolygonIcon } from "@/components/icons/PolygonIcon";
 import { DevIcon } from "@/components/icons/DevIcon"; // Mudança aqui
 import { DefaultAvatar } from "@/components/icons/DefaultAvatar";
+import Image from 'next/image'
 
 function WalletOptions() {
   const { connectors, connect } = useConnect()
@@ -80,7 +81,7 @@ function WalletOption({
     >
       <div className="flex items-center justify-start w-full gap-3">
         {connector.icon && (
-          <img
+          <Image
             alt={`${connector.name} icon`}
             src={connector.icon}
             className="h-6 w-6 rounded-sm"
@@ -210,7 +211,7 @@ function Account() {
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           {ensAvatar ? (
-            <img 
+            <Image
               alt="ENS Avatar" 
               src={ensAvatar} 
               className="w-10 h-10 rounded-full border-2" 
