@@ -1,7 +1,7 @@
 import { http, createConfig } from 'wagmi'
 import { anvil, polygonAmoy, sepolia } from 'wagmi/chains'
 import { metaMask, walletConnect } from 'wagmi/connectors'
-import { createClient } from 'viem'
+import { createWalletClient } from 'viem'
 
 // URLs de fallback públicas (sem chaves de API)
 const fallbackRpcUrls = {
@@ -29,17 +29,17 @@ export function createWagmiConfig(
     client({ chain }) {
       switch (chain.id) {
         case sepolia.id:
-          return createClient({ 
+          return createWalletClient({ 
             chain, 
             transport: http(rpcUrls.sepolia)
           });
         case polygonAmoy.id:
-          return createClient({ 
+          return createWalletClient({ 
             chain, 
             transport: http(rpcUrls.polygonAmoy)
           });
         default:
-          return createClient({ 
+          return createWalletClient({ 
             chain, 
             transport: http()
           });
